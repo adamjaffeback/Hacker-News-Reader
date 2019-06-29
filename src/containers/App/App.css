@@ -18,6 +18,10 @@
   align-self: center;
 }
 
+.App-main {
+  grid-area: main;
+}
+
 .App-footer {
   grid-area: footer;
   justify-self: center;
