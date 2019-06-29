@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import logo from './assets/doist-logo.svg';
+import logo from '../../assets/doist-logo.svg';
 
 function App() {
   return (
