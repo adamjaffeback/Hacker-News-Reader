@@ -22,6 +22,7 @@ StoryItem.displayName = 'StoryItem';
 
 StoryItem.propTypes = {
   story: PropTypes.shape({
+    id: PropTypes.string.isRequired,
     url: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     by: PropTypes.string.isRequired,
@@ -29,4 +30,8 @@ StoryItem.propTypes = {
   }).isRequired,
 };
 
-export default StoryItem;
+// When the StoryList is passed new props,
+// only rerender StoryItems which are brand new
+export default React.memo(StoryItem, (prevProps, nextProps) => {
+  return prevProps.story.id === nextProps.story.id;
+});

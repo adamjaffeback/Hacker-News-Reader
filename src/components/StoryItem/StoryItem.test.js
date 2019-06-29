@@ -4,6 +4,7 @@ import StoryItem from './index';
 
 it('renders without crashing', () => {
   const story = {
+    id: '1',
     url: 'www.google.com',
     title: 'Google.com',
     by: 'Test',
