@@ -1,0 +1,13 @@
+a.StoryItem:visited {
+  text-decoration: underline;
+  color: white;
+  font-weight: bold;
+  border-bottom: none;
+}
+
+a.Story-Item:visited {
+  text-decoration: underline;
+  color: white;
+  font-weight: bold;
+  border-bottom: none;
+}
