@@ -22,11 +22,11 @@ StoryItem.displayName = 'StoryItem';
 
 StoryItem.propTypes = {
   story: PropTypes.shape({
-    id: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
     url: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     by: PropTypes.string.isRequired,
-    time: PropTypes.string.isRequired,
+    time: PropTypes.number.isRequired,
   }).isRequired,
 };
 
