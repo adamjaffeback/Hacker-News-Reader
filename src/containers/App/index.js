@@ -1,9 +1,7 @@
 import React, {useState, useEffect, useRef} from 'react';
 import './App.css';
 import StoryList from '../../components/StoryList';
-import InfiniteScroll from 'react-infinite-scroll-component';
 import {Header, Footer} from '../../components/Layout';
-import logo from '../../assets/doist-logo.svg';
 
 function App() {
   const fetchingCache = useRef([]);
@@ -55,12 +53,7 @@ function App() {
     <div className="App">
       <Header />
       <main className='App-main'>
-        <InfiniteScroll
-          dataLength={stories.length}
-          next={populateFetchingCache}
-          hasMore={true}>
-          <StoryList stories={stories} />
-        </InfiniteScroll>
+        <StoryList stories={stories} onNextData={populateFetchingCache} />
       </main>
       <Footer />
     </div>
