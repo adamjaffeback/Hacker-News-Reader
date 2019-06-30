@@ -4,7 +4,7 @@ import './StoryItem.css';
 import moment from 'moment';
 
 function StoryItem({story}) {
-  const localizedDate = moment(story.time).format('lll');
+  const localizedDate = moment.unix(story.time).format('lll');
 
   return (
     <li>
