@@ -14,6 +14,20 @@ workbox.routing.registerNavigationRoute('/index.html', {
       blacklist: [/^\/_/, /\/[^\/]+\.[^\/]+$/],
     });
 
+// cache the call to get the most recent story ids
+// only if you can't get the freshest list first
+workbox.routing.registerRoute(
+  new RegExp('https://hacker-news.firebaseio.com/v0/newstories.json'),
+  new workbox.strategies.NetworkFirst({cacheName: 'most-recent-stories'}),
+);
+
+// cache individual stories. Since they don't change, just serve the stale
+// version immediately and update the cache when the network can
+workbox.routing.registerRoute(
+  /^https:\/\/hacker-news\.firebaseio\.com\/v0\/item\/\d+\.json/,
+  new workbox.strategies.StaleWhileRevalidate({cacheName: 'stories'}),
+);
+
 workbox.routing.registerRoute(
       /\.(?:png|gif|jpg|jpeg|svg)$/,
       workbox.strategies.cacheFirst({
