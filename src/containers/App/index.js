@@ -2,7 +2,7 @@ import React, {useState, useEffect, useRef} from 'react';
 import './App.css';
 import StoryList from '../../components/StoryList';
 import InfiniteScroll from 'react-infinite-scroll-component';
-import {Footer} from '../../components/Layout';
+import {Header, Footer} from '../../components/Layout';
 import logo from '../../assets/doist-logo.svg';
 
 function App() {
@@ -53,10 +53,7 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
-       <h3 style={{alignSelf: 'center'}}>Hacker News Reader</h3>
-      </header>
-
+      <Header />
       <main className='App-main'>
         <InfiniteScroll
           dataLength={stories.length}
@@ -65,7 +62,6 @@ function App() {
           <StoryList stories={stories} />
         </InfiniteScroll>
       </main>
-
       <Footer />
     </div>
   );

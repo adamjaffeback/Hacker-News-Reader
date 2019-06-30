@@ -5,30 +5,9 @@
   flex-direction: column;
 }
 
-.App-header {
-  height: 10%;
-  width: 100vw;
-  position: fixed;
-  top: 0;
-  text-align: left;
-  padding-left: 5%;
-  background-color: white;
-  display: flex;
-}
-
 .App-main {
   height: 80%;
   padding-top: 10%;
   padding-bottom: 10%;
   padding-left: 5%;
-}
-
-.App-footer {
-  height: 10%;
-  width: 100vw;
-  position: fixed;
-  bottom: 0;
-  background-color: white;
-  display: flex;
-  align-items: center;
 }
