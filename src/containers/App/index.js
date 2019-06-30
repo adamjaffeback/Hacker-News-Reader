@@ -15,7 +15,7 @@ function App() {
     getNextStory();
   }
 
-  async function getTopFiveHundredStoryIds () {
+  async function getFiveHundredNewStoryIds () {
     const url = `https://hacker-news.firebaseio.com/v0/newstories.json`;
     const response = await fetch(url);
     const ids = await response.json();
@@ -24,7 +24,7 @@ function App() {
   }
 
   useEffect(() => {
-    getTopFiveHundredStoryIds();
+    getFiveHundredNewStoryIds();
   }, []);
 
   async function getNextStory () {
