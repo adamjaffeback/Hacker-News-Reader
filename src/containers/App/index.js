@@ -1,6 +1,6 @@
 import React, {useState, useEffect, useRef} from 'react';
 import './App.css';
-import StoryItem from '../../components/StoryItem';
+import StoryList from '../../components/StoryList';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import logo from '../../assets/doist-logo.svg';
 
@@ -68,14 +68,11 @@ function App() {
       </header>
 
       <main className='App-main'>
-        {stories.length}
         <InfiniteScroll
           dataLength={stories.length}
           next={populateFetchingCache}
           hasMore={true}>
-          {stories.map((story) => (
-            <StoryItem key={story.id} story={story} />
-          ))}
+          <StoryList stories={stories} />
         </InfiniteScroll>
       </main>
 

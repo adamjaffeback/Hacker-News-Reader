@@ -9,9 +9,9 @@ function StoryList({stories}) {
   });
 
   return (
-    <>
+    <ul>
       {storyItems}
-    </>
+    </ul>
   );
 }
 
