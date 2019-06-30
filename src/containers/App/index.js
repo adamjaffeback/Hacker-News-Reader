@@ -2,6 +2,7 @@ import React, {useState, useEffect, useRef} from 'react';
 import './App.css';
 import StoryList from '../../components/StoryList';
 import InfiniteScroll from 'react-infinite-scroll-component';
+import OfflineWarning from '../../components/OfflineWarning';
 import logo from '../../assets/doist-logo.svg';
 
 function App() {
@@ -66,7 +67,13 @@ function App() {
       </main>
 
       <footer className='App-footer'>
-        <img src={logo} className="App-doist-logo" alt="Doist logo" />
+        <div style={{flex: 1, textAlign: 'center'}}>
+          <OfflineWarning />
+        </div>
+        <div>
+          <img src={logo} className="App-doist-logo" alt="Doist logo" />
+        </div>
+        <div style={{minWidth: '5vw'}}></div>
       </footer>
     </div>
   );

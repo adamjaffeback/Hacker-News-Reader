@@ -29,9 +29,6 @@
   position: fixed;
   bottom: 0;
   background-color: white;
-  text-align: right;
-}
-
-.App-footer > img {
-  margin-right: 5%;
+  display: flex;
+  align-items: center;
 }
