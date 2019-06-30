@@ -16,23 +16,11 @@ function App() {
   }
 
   async function getTopFiveHundredStoryIds () {
-    return new Promise(resolve => {
-      const url = `https://hacker-news.firebaseio.com/v0/topstories.json`;
-      const request = new XMLHttpRequest();
-
-      request.onreadystatechange = function () {
-        if (request.readyState === 4 && request.status === 200) {
-          resolve(JSON.parse(request.responseText));
-        }
-      }
-
-      request.open('GET', url, true);
-      request.send(null);
-    })
-    .then(ids => {
-      storyIds.current = ids;
-      populateFetchingCache();
-    });
+    const url = `https://hacker-news.firebaseio.com/v0/newstories.json`;
+    const response = await fetch(url);
+    const ids = await response.json();
+    storyIds.current = ids;
+    populateFetchingCache();
   }
 
   useEffect(() => {
@@ -40,25 +28,16 @@ function App() {
   }, []);
 
   async function getNextStory () {
-    return new Promise(resolve => {
-      const nextItemId = fetchingCache.current.shift();
+    const nextItemId = fetchingCache.current.shift();
+    const url = `https://hacker-news.firebaseio.com/v0/item/${nextItemId}.json`;
+    const response = await fetch(url);
+    const story = await response.json();
 
-      const url = `https://hacker-news.firebaseio.com/v0/item/${nextItemId}.json`;
-      const request = new XMLHttpRequest();
+    updateStories(strs => strs.concat(story));
 
-      request.onreadystatechange = function () {
-        if (request.readyState === 4 && request.status === 200) {
-          updateStories(strs => strs.concat(JSON.parse(request.responseText)));
-
-          if (fetchingCache.current.length) {
-            getNextStory();
-          }
-        }
-      }
-
-      request.open('GET', url, true);
-      request.send(null);
-    });
+    if (fetchingCache.current.length) {
+      getNextStory();
+    }
   }
 
   return (
