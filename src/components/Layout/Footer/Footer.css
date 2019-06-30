@@ -1,0 +1,18 @@
+.Footer {
+  height: 10%;
+  width: 100vw;
+  position: fixed;
+  bottom: 0;
+  background-color: white;
+  display: flex;
+  align-items: center;
+}
+
+.Footer-offline {
+  flex: 1;
+  text-align: center;
+}
+
+.Footer-right-space {
+  min-width: 5vw;
+}
