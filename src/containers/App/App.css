@@ -1,29 +1,37 @@
 .App {
-  background-color: #282c34;
-  min-height: 100vh;
   font-size: calc(10px + 2vmin);
-  color: white;
-  display: grid;
-  grid-template-columns: 20vw 60vw 20vw;
-  grid-template-rows: 10vh 80vh 10vh;
-  grid-template-areas:
-    "header . ."
-    ". main ."
-    ". . footer"
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .App-header {
-  grid-area: header;
-  justify-self: right;
-  align-self: center;
+  height: 10%;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  text-align: left;
+  padding-left: 5%;
+  background-color: white;
+  display: flex;
 }
 
 .App-main {
-  grid-area: main;
+  height: 80%;
+  padding-top: 10%;
+  padding-bottom: 10%;
+  padding-left: 5%;
 }
 
 .App-footer {
-  grid-area: footer;
-  justify-self: center;
-  align-self: center;
+  height: 10%;
+  width: 100vw;
+  position: fixed;
+  bottom: 0;
+  background-color: white;
+  text-align: right;
+}
+
+.App-footer > img {
+  margin-right: 5%;
 }
