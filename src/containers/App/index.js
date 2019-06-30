@@ -1,32 +1,65 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import './App.css';
 import StoryItem from '../../components/StoryItem';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import logo from '../../assets/doist-logo.svg';
 
 function App() {
-  const initialState = [];
+  const fetchingCache = useRef([]);
+  const storyIds = useRef([]);
+  const [stories, updateStories] = useState([]);
 
-  for (let i = 0; i < 30; i++) {
-    initialState.push(
-      {id: i.toString(), url: 'www.google.com', title: `Test ${i}`, by: 'Adam', time: new Date().toString()}
-    );
+  async function populateFetchingCache () {
+    fetchingCache.current = storyIds.current.slice(0, 20);
+    storyIds.current = storyIds.current.slice(20);
+    getNextStory();
   }
-  const [stories, updateStories] = useState(initialState);
 
-  function fetchMoreStories () {
-    // a fake async api call like which sends
-    // 20 more records in 1.5 secs
-    const moreStories = [];
-    const currentStoryCount = stories.length;
-    for (let i = currentStoryCount; i < currentStoryCount + 20; i++) {
-      moreStories.push({id: i.toString(), url: 'www.google.com', title: `Test ${i}`, by: 'Adam', time: new Date().toString()});
-    }
+  async function getTopFiveHundredStoryIds () {
+    return new Promise(resolve => {
+      const url = `https://hacker-news.firebaseio.com/v0/topstories.json`;
+      const request = new XMLHttpRequest();
 
-    setTimeout(() => {
-      updateStories([...stories, ...moreStories]);
-    }, 1500);
-  };
+      request.onreadystatechange = function () {
+        if (request.readyState === 4 && request.status === 200) {
+          resolve(JSON.parse(request.responseText));
+        }
+      }
+
+      request.open('GET', url, true);
+      request.send(null);
+    })
+    .then(ids => {
+      storyIds.current = ids;
+      populateFetchingCache();
+    });
+  }
+
+  useEffect(() => {
+    getTopFiveHundredStoryIds();
+  }, []);
+
+  async function getNextStory () {
+    return new Promise(resolve => {
+      const nextItemId = fetchingCache.current.shift();
+
+      const url = `https://hacker-news.firebaseio.com/v0/item/${nextItemId}.json`;
+      const request = new XMLHttpRequest();
+
+      request.onreadystatechange = function () {
+        if (request.readyState === 4 && request.status === 200) {
+          updateStories(strs => strs.concat(JSON.parse(request.responseText)));
+
+          if (fetchingCache.current.length) {
+            getNextStory();
+          }
+        }
+      }
+
+      request.open('GET', url, true);
+      request.send(null);
+    });
+  }
 
   return (
     <div className="App">
@@ -35,9 +68,10 @@ function App() {
       </header>
 
       <main className='App-main'>
+        {stories.length}
         <InfiniteScroll
           dataLength={stories.length}
-          next={fetchMoreStories}
+          next={populateFetchingCache}
           hasMore={true}>
           {stories.map((story) => (
             <StoryItem key={story.id} story={story} />
