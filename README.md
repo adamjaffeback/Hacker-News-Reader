@@ -16,10 +16,11 @@ cd Hack-News-Reader/
 npm install
 ```
 
+## Run
+
 To run in development mode:
 
 `npm start` will automatically launch [localhost:3000](localhost:3000) (on Linux-based machines, at least).
-
 
 **To run for evaluation, please use production mode:**
 
@@ -51,6 +52,14 @@ The bootstrapping tool I used is the well-known and well-used [Create React App]
 One of the main features of this app was to make it a PWA by caching calls to the third-party API (Hacker News). I had to build my own service worker and workbox-build had the best documentation for that.
 
 Also, this is just a dev dependency.
+
+## Todo
+
+- Unit test `App/helpers.js`
+- Add more meaningful tests for the container and components
+- Remove "Loading stories..." if we're offline and have reached the end of the
+cache
+- Add script to generate docs from inline JSDoc
 
 ## Available Scripts
 
