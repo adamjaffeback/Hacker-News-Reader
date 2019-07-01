@@ -1,6 +1,6 @@
 const makeUrl = id => `https://hacker-news.firebaseio.com/v0/item/${id}.json`;
 
-export async function fetchItem (id) {
+async function fetchItem (id) {
   const response = await fetch(makeUrl(id));
   return await response.json();
 }
@@ -48,14 +48,4 @@ export async function walkIdsToLoadStories (nextId, updateStories, isFetching) {
 
   nextId.current = nextId.current - itemsChecked;
   isFetching.current = false;
-}
-
-export async function getMoreStories (cache, storyIds, nextId, isFetching, updateStories) {
-  if (storyIds.current.length > 0) {
-    cache.current = storyIds.current.slice(0, 20);
-    storyIds.current = storyIds.current.slice(20);
-    getNextStoryFromCache(cache, updateStories);
-  } else if (isFetching.current === false) {
-    walkIdsToLoadStories(nextId, updateStories, isFetching);
-  }
 }
