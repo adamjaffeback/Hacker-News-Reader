@@ -18,13 +18,12 @@ function StoryItem({story}) {
   const localizedDate = moment.unix(story.time).format('lll');
 
   return (
-    <li>
-      <b><a href={story.url}
+    <li className="StoryItem">
+      <a href={story.url}
          target="_blank"
-         rel="noopener noreferrer"
-         className="StoryItem">
+         rel="noopener noreferrer">
         {story.title}
-      </a></b> by {story.by} on {localizedDate}
+      </a> <span>by {story.by} on {localizedDate}</span>
     </li>
   );
 }
