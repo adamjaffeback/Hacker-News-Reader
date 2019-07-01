@@ -3,13 +3,15 @@ import React, {useState, useEffect} from 'react';
 function OfflineWarning() {
   const [online, updateStatus] = useState(true);
 
+  const doStatusUpdate = online => updateStatus(online);
+
   useEffect(() => {
-    window.addEventListener('online', () => updateStatus(true));
-    window.addEventListener('offline', () => updateStatus(false));
+    window.addEventListener('online', doStatusUpdate.bind(null, true));
+    window.addEventListener('offline', doStatusUpdate.bind(null, false));
 
     return () => {
-      window.removeEventListener('online');
-      window.removeEventListener('offline');
+      window.removeEventListener('online', doStatusUpdate.bind(null, true));
+      window.removeEventListener('offline', doStatusUpdate.bind(null, false));
     };
   }, []);
 
