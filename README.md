@@ -3,6 +3,49 @@ Doist Web Developer Test Project: News reader app which displays the latest Hack
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Setup
+
+Prerequisites:
+- Node.js v10
+- npm with that version of Node.js
+- Internet connection for initial package installation
+
+```bash
+git clone https://github.com/adamjaffeback/Hacker-News-Reader.git
+cd Hack-News-Reader/
+npm install
+```
+
+To run in development mode:
+
+`npm start` will automatically launch localhost:3000 (on Linux-based machines, at least).
+
+**To run for evaluation, please use production mode:**
+
+`npm run start:prod` and manually open a browser to localhost:5000.
+
+## Added NPM Packages
+
+### prop-types
+
+Needed to document React component defaultProps and propTypes values.
+
+### moment
+
+Moment.js is used in the StoryItem to display the story's timestamp *with localization*—that means with language support and proper local formatting. There's no other way I could provide a user with such customized date formatting without including Moment.js.
+
+### react-infinite-scroll-component
+
+I weighed the pros/cons of building my own infinite scroll, with the main consideration being the time limit of the project. This package only adds 4.15 kB.
+
+### workbox-build
+
+The bootstrapping tool I used is the well-known and well-used [Create React App](https://github.com/facebook/create-react-app). This starter project comes ready with service worker support, but it is implemented through blackbox magic in `react-scripts`. Those scripts are super handy: all the best practices for Webpack, babel, etc. are included, but it makes it difficult to customize the built-in service worker.
+
+One of the main features of this app was to make it a PWA by caching calls to the third-party API (Hacker News). I had to build my own service worker and workbox-build had the best documentation for that.
+
+Also, this is just a dev dependency.
+
 ## Available Scripts
 
 In the project directory, you can run:
@@ -14,6 +57,10 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.<br>
 You will also see any lint errors in the console.
+
+### `npm run start:prod`
+
+Bundles the application for production using `react-scripts build`, then starts a simple server with `serve -s build`. Open [http://localhost:5000](http://localhost:5000) to view it in the browser.
 
 ### `npm test`
 
@@ -29,43 +76,3 @@ The build is minified and the filenames include the hashes.<br>
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
