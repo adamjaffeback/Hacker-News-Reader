@@ -13,7 +13,13 @@ function StoryList({stories, onNextData}) {
     <InfiniteScroll
       dataLength={stories.length}
       next={onNextData}
-      hasMore={true}>
+      hasMore={stories[stories.length - 1] !== 1}
+      loader={<h4>Loading more stories...</h4>}
+      endMessage={
+        <p style={{textAlign: 'center'}}>
+          <b>You've reached the end of the internet. Congratulations.</b>
+        </p>
+      }>
       <ul>
         {storyItems}
       </ul>
