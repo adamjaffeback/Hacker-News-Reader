@@ -12,7 +12,7 @@ Prerequisites:
 
 ```bash
 git clone https://github.com/adamjaffeback/Hacker-News-Reader.git
-cd Hack-News-Reader/
+cd Hacker-News-Reader/
 npm install
 ```
 
