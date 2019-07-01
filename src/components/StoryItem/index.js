@@ -24,7 +24,7 @@ StoryItem.propTypes = {
   story: PropTypes.shape({
     id: PropTypes.number.isRequired,
     // Ask HN items are "stories" without a url,
-    // but this component should require one.
+    // but this component *should* require one.
     url: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     by: PropTypes.string.isRequired,
