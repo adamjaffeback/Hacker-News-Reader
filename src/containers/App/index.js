@@ -7,6 +7,8 @@ import {populateFetchingCache} from './helpers';
 function App() {
   const fetchingCache = useRef([]);
   const storyIds = useRef([]);
+  const nextId = useRef(0);
+  const isFetching = useRef(false);
   const [stories, updateStories] = useState([]);
 
   useEffect(() => {
@@ -15,7 +17,8 @@ function App() {
       const response = await fetch(url);
       const ids = await response.json();
       storyIds.current = ids;
-      populateFetchingCache(fetchingCache, storyIds, updateStories);
+      nextId.current = ids[ids.length - 1] - 1;
+      populateFetchingCache(fetchingCache, storyIds, nextId, isFetching, updateStories);
     }
 
     getFiveHundredNewStoryIds();
@@ -27,7 +30,7 @@ function App() {
       <main className='App-main'>
         <StoryList
           stories={stories}
-          onNextData={populateFetchingCache.bind(null, fetchingCache, storyIds, updateStories)} />
+          onNextData={populateFetchingCache.bind(null, fetchingCache, storyIds, nextId, isFetching, updateStories)} />
       </main>
       <Footer />
     </div>
