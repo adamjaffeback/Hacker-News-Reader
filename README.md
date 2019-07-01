@@ -18,11 +18,17 @@ npm install
 
 To run in development mode:
 
-`npm start` will automatically launch localhost:3000 (on Linux-based machines, at least).
+`npm start` will automatically launch [localhost:3000](localhost:3000) (on Linux-based machines, at least).
+
 
 **To run for evaluation, please use production mode:**
 
-`npm run start:prod` and manually open a browser to localhost:5000.
+`npm run start:prod` and manually open a browser to [localhost:5000](localhost:5000).
+
+To evaluate PWA and the service worker, you'll need to refresh [localhost:5000](localhost:5000)
+after the first page load. This is because, ["By default, a page's fetches won't
+go through a service worker unless the page request itself went through a
+service worker."](https://developers.google.com/web/fundamentals/primers/service-workers/lifecycle#the_first_service_worker)
 
 ## Added NPM Packages
 
@@ -60,7 +66,12 @@ You will also see any lint errors in the console.
 
 ### `npm run start:prod`
 
-Bundles the application for production using `react-scripts build`, then starts a simple server with `serve -s build`. Open [http://localhost:5000](http://localhost:5000) to view it in the browser.
+1. Bundles the application for production using `react-scripts build`
+1. Builds the custom service worker
+1. Removes up Create React App's service worker
+1. Installs yarn's server package for simple static assets
+1. Starts the server with `serve -s build`
+1. Open [http://localhost:5000](http://localhost:5000) to view it in the browser.
 
 ### `npm test`
 
