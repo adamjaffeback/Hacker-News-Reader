@@ -8,6 +8,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 Prerequisites:
 - Node.js v10
 - npm with that version of Node.js
+- [yarn package manager](https://yarnpkg.com/en/docs/install) to install serve package
 - Internet connection for initial package installation
 
 ```bash
