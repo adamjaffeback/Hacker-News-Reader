@@ -1,5 +1,9 @@
 import React, {useState, useEffect} from 'react';
 
+/**
+ * Show when the application is working offline from the service worker due to
+ * the network being disconnected.
+ */
 function OfflineWarning() {
   const [online, updateStatus] = useState(true);
 

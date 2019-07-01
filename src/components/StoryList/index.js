@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 import StoryItem from '../StoryItem';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
+/**
+ * Infinite scroll of Hack News stories (StoryItem).
+ */
 function StoryList({stories, onNextData}) {
   const storyItems = stories.map(story => {
     return <StoryItem key={story.id} story={story} />;
@@ -33,6 +36,7 @@ StoryList.defaultProps = {
 };
 
 StoryList.propTypes = {
+  /** @type {HackerNewsStory[]} */
   stories: PropTypes.array.isRequired,
   onNextData: PropTypes.func.isRequired,
 };

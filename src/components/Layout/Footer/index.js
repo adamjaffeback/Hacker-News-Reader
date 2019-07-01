@@ -3,6 +3,9 @@ import './Footer.css';
 import OfflineWarning from '../../OfflineWarning';
 import logo from '../../../assets/doist-logo.svg';
 
+/**
+ * Footer which displays the Doist logo and a warning if we're offline.
+ */
 function Footer() {
   return (
     <footer className='Footer'>

@@ -1,6 +1,9 @@
 import React from 'react';
 import './Header.css';
 
+/**
+ * Simple header layout.
+ */
 function Header() {
   return (
     <header className="Header">

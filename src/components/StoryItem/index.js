@@ -3,7 +3,18 @@ import PropTypes from 'prop-types';
 import './StoryItem.css';
 import moment from 'moment';
 
+/**
+ * Metadata about a story on Hacker News.
+ * @see {@link https://github.com/HackerNews/API#items|Item}
+ * @typedef {Object} HackerNewsStory
+ */
+
+/**
+ * Display the title, author, and date posted for a Hacker News Story.
+ * Title is clickable if a URL is given.
+ */
 function StoryItem({story}) {
+  /** @type {string} */
   const localizedDate = moment.unix(story.time).format('lll');
 
   return (
@@ -21,6 +32,7 @@ function StoryItem({story}) {
 StoryItem.displayName = 'StoryItem';
 
 StoryItem.propTypes = {
+  /** @type {HackerNewsStory} */
   story: PropTypes.shape({
     id: PropTypes.number.isRequired,
     // Ask HN items are "stories" without a url,
