@@ -8,7 +8,6 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 Prerequisites:
 - Node.js v10
 - npm with that version of Node.js
-- [yarn package manager](https://yarnpkg.com/en/docs/install) to install serve package
 - Internet connection for initial package installation
 
 ```bash
@@ -34,25 +33,31 @@ service worker."](https://developers.google.com/web/fundamentals/primers/service
 
 ## Added NPM Packages
 
-### prop-types
+### Dependencies
+
+#### prop-types
 
 Needed to document React component defaultProps and propTypes values.
 
-### moment
+#### moment
 
 Moment.js is used in the StoryItem to display the story's timestamp *with localization*—that means with language support and proper local formatting. There's no other way I could provide a user with such customized date formatting without including Moment.js.
 
-### react-infinite-scroll-component
+#### react-infinite-scroll-component
 
 I weighed the pros/cons of building my own infinite scroll, with the main consideration being the time limit of the project. This package only adds 4.15 kB.
 
-### workbox-build
+### Dev Dependencies
+
+#### workbox-build
 
 The bootstrapping tool I used is the well-known and well-used [Create React App](https://github.com/facebook/create-react-app). This starter project comes ready with service worker support, but it is implemented through blackbox magic in `react-scripts`. Those scripts are super handy: all the best practices for Webpack, babel, etc. are included, but it makes it difficult to customize the built-in service worker.
 
 One of the main features of this app was to make it a PWA by caching calls to the third-party API (Hacker News). I had to build my own service worker and workbox-build had the best documentation for that.
 
-Also, this is just a dev dependency.
+#### serve
+
+Simple static server for serving the production build locally. The easiest, non-configuration way to share this code with evaluators. For usage, run `npm run start:prod`.
 
 ## Todo
 
@@ -79,14 +84,8 @@ You will also see any lint errors in the console.
 1. Bundles the application for production using `react-scripts build`
 1. Builds the custom service worker
 1. Removes up Create React App's service worker
-1. Installs yarn's server package for simple static assets
 1. Starts the server with `serve -s build`
 1. Open [http://localhost:5000](http://localhost:5000) to view it in the browser.
-
-Ideally, I'd not have `serve -s build` part of this task, but rather part of the
-setup in this README. However, I wanted to follow the instructions from the
-specs, "Make sure your project is easy to setup. Your app should be ready to run
-after npm install."
 
 ### `npm test`
 
