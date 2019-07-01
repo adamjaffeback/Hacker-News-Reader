@@ -73,6 +73,11 @@ You will also see any lint errors in the console.
 1. Starts the server with `serve -s build`
 1. Open [http://localhost:5000](http://localhost:5000) to view it in the browser.
 
+Ideally, I'd not have `serve -s build` part of this task, but rather part of the
+setup in this README. However, I wanted to follow the instructions from the
+specs, "Make sure your project is easy to setup. Your app should be ready to run
+after npm install."
+
 ### `npm test`
 
 Launches the test runner in the interactive watch mode.<br>
