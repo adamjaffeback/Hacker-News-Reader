@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './StoryList.css';
 import StoryItem from '../StoryItem';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
@@ -16,13 +17,13 @@ function StoryList({stories, onNextData}) {
       dataLength={stories.length}
       next={onNextData}
       hasMore={stories[stories.length - 1] !== 1}
-      loader={<h4>Loading more stories...</h4>}
+      loader={<h4 className="StoryList-scrollMessage">Loading more stories...</h4>}
       endMessage={
-        <p style={{textAlign: 'center'}}>
-          <b>You've reached the end of the internet. Congratulations.</b>
+        <p className="StoryList-scrollMessage">
+          You've reached the end of the internet. Congratulations.
         </p>
       }>
-      <ul>
+      <ul className="StoryList-ul">
         {storyItems}
       </ul>
     </InfiniteScroll>

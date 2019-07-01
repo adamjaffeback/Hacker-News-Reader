@@ -3,6 +3,7 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  background-color: #282c34;
 }
 
 .App-main {

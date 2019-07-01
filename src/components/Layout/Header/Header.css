@@ -5,8 +5,9 @@
   top: 0;
   text-align: left;
   padding-left: 5%;
-  background-color: white;
   display: flex;
+  color: #fcfcfc;
+  background-color: #282c34;
 }
 
 .Header > h3 {

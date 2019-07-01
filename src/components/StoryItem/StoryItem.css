@@ -5,10 +5,10 @@ li.StoryItem {
 li.StoryItem > a,
 li.StoryItem > a:visited {
   text-decoration: underline;
-  color: black;
+  color: #e5e7eb;
   border-bottom: none;
 }
 
 li.StoryItem > span {
-  color: grey;
+  color: #8d95a7;
 }
