@@ -6,6 +6,10 @@ import React, {useState, useEffect} from 'react';
  */
 function OfflineWarning() {
   const [online, updateStatus] = useState(true);
+  const styles = {
+    color: '#aeb4c1',
+    display: online ? 'none' : 'inherit',
+  };
 
   const doStatusUpdate = online => updateStatus(online);
 
@@ -20,7 +24,7 @@ function OfflineWarning() {
   }, []);
 
   return (
-    <div style={{display: online ? 'none' : 'inherit'}}>Working offline...</div>
+    <div style={styles}>Working offline...</div>
   );
 }
 
